@@ -1,0 +1,18 @@
+GET http://localhost:3000
+
+### get all students
+GET http://localhost:3000/students
+
+### get students details
+GET http://localhost:3000/students/1
+
+### get students details
+POST http://localhost:3000/students
+Content-Type: application/json
+
+{
+    "name":"ilham",
+    "age":21,
+    "address":"surabaya",
+    "is_active":"true"
+}
