@@ -4,15 +4,29 @@ GET http://localhost:3000
 GET http://localhost:3000/students
 
 ### get students details
-GET http://localhost:3000/students/1
+GET http://localhost:3000/students/4
 
 ### get students details
 POST http://localhost:3000/students
 Content-Type: application/json
 
 {
-    "name":"ilham",
+    "name":"sogol",
     "age":21,
     "address":"surabaya",
     "is_active":"true"
 }
+
+### update
+PUT http://localhost:3000/students/3
+Content-Type: application/json
+
+{
+    "name":"dewa",
+    "age":21,
+    "address":"surabaya",
+    "is_active":"true"
+}
+
+### delete
+delete http://localhost:3000/students/3
