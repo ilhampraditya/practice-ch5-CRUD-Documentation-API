@@ -1,13 +1,13 @@
-GET http://localhost:3000
+GET http://localhost:3000/v1
 
 ### get all students
-GET http://localhost:3000/students
+GET http://localhost:3000/v1/students
 
 ### get students details
-GET http://localhost:3000/students/4
+GET http://localhost:3000/v1/students/4
 
-### get students details
-POST http://localhost:3000/students
+### create students
+POST http://localhost:3000/v1/students
 Content-Type: application/json
 
 {
@@ -18,15 +18,15 @@ Content-Type: application/json
 }
 
 ### update
-PUT http://localhost:3000/students/3
+PUT http://localhost:3000/v1/students/5
 Content-Type: application/json
 
 {
-    "name":"dewa",
+    "name":"adit",
     "age":21,
-    "address":"surabaya",
+    "address":"malang",
     "is_active":"true"
 }
 
 ### delete
-delete http://localhost:3000/students/3
+delete http://localhost:3000/v1/students/1

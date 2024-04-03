@@ -1,0 +1,224 @@
+openapi: 3.0.1
+info:
+  title: Tugas API Documentation
+  description: API student
+  version: 1.0.0
+  contact:
+    email: pradityailham04@gmail.com
+servers:
+  - url: http://localhost:3000/v1
+paths:
+  /students:
+    post:
+      summary: Create new student
+      description: mendaftarkan student baru kedalam sistem.
+      requestBody:
+        $ref: "#/components/requestBodies/Register"
+      responses:
+        201:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    type: integer
+                    example: 1
+        400:
+          description: body must be required
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: failed!
+
+    get:
+      summary: Get All students
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/User"
+
+  /students/{id}:
+    get:
+      summary: Get Detail student
+      parameters:
+        - schema:
+            type: integer
+          name: id
+          in: path
+          required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    $ref: "#/components/schemas/User"
+
+        404:
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Student not found!
+    put:
+      summary: Edit students
+      parameters:
+        - schema:
+            type: integer
+          name: id
+          in: path
+          required: true
+      requestBody:
+        $ref: "#/components/requestBodies/Register"
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    $ref: "#/components/schemas/User"
+
+        404:
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: failed!
+    delete:
+      summary: Delete students
+      parameters:
+        - schema:
+            type: integer
+          name: id
+          in: path
+          required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    example: null
+
+        404:
+          description: not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: failed!
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: ilham
+        age:
+          type: integer
+          example: 21
+        address:
+          type: string
+          example: jalan mawar
+        is_active:
+          type: boolean
+          example: true
+  requestBodies:
+    Register:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                example: ilham
+              age:
+                type: integer
+                example: 21
+              address:
+                type: string
+                example: jalan mawar
+              is_active:
+                type: boolean
+                example: true
